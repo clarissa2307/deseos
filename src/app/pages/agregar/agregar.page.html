@@ -20,7 +20,7 @@
 
     <ion-list>
 
-        <ion-list-header class="dark">
+        <ion-list-header class="dark" *ngIf="lista.items.length > 0">
             <ion-label>Tareas por hacer</ion-label>
         </ion-list-header>
 
@@ -42,3 +42,4 @@
 
         </ion-item-sliding>
     </ion-list>
+</ion-content>

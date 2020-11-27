@@ -6,13 +6,24 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" color="dark">
+<ion-content color="dark">
+
     <ion-list color="dark">
-        <ion-item *ngFor="let lista of deseosService.listas" detail color="dark">
+        <ion-item *ngFor="let lista of deseosService.listas" detail color="dark" (click)="listaSeleccionada( lista )">
             <ion-label> {{ lista.titulo }}</ion-label>
+            <ion-note slot="end" color="warning">{{ lista.items.length }} items</ion-note>
         </ion-item>
 
+
+
     </ion-list>
+
+
+
+
+
+
+
     <!-- fab placed to the bottom end -->
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button color="warning" (click)="agregarLista()">
