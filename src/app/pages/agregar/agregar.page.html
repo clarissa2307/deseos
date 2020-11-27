@@ -18,13 +18,14 @@
         </ion-item>
     </ion-list>
 
-    <ion-list color="dark">
-        <ion-list-header color="dark">
+    <ion-list>
+
+        <ion-list-header class="dark">
             <ion-label>Tareas por hacer</ion-label>
         </ion-list-header>
 
-        <ion-item color="dark">
-            <ion-checkbox slot="start" color="tertiary" [(ngModel)]="item.completado" (ionChange)="cambioCheck( item )"></ion-checkbox>
+        <ion-item color="dark" *ngFor="let item of lista.items" class="animated fadeInDown">
+            <ion-checkbox slot="start" color="warning" [(ngModel)]="item.completado" (ionChange)="cambioCheck( item )"></ion-checkbox>
             <ion-label>{{ item.desc }}</ion-label>
         </ion-item>
     </ion-list>

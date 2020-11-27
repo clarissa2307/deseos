@@ -15,25 +15,44 @@ export class AgregarPage implements OnInit {
   nombreItem = '';
 
   constructor( private deseosService: DeseosService,
-               private router: ActivatedRoute ) {
+               private route: ActivatedRoute ) {
 
-const listaId = this.router.snapshot.paramMap.get('listaId');
-console.log(listaId);
-this.lista = this.deseosService.obtenerLista( listaId );
+      const listaId = this.route.snapshot.paramMap.get('listaId');
+      
+      this.lista = this.deseosService.obtenerLista( listaId );
 }
 
   ngOnInit() {
+}
+agregarItem() { 
+  if ( this.nombreItem.length === 0 ) {
+    return;
+  }
 
-    agregarItem() {
-      if ( this.nombreItem.length === 0 ) {
-        return;
-      }
+  const nuevoItem = new ListaItem( this.nombreItem );
+  this.lista.items.push( nuevoItem );
+
+  this.nombreItem = '';
+  this.deseosService.guardarStorage();
   
-      const nuevoItem = new ListaItem( this.nombreItem );
-      this.lista.items.push( nuevoItem );
-  
-      this.nombreItem = '';
-      this.deseosService.guardarStorage();
+
+  }
+
+  cambioCheck( item: ListaItem) {
+
+    const pendientes = this.lista.items
+          .filter( itemData => !itemData.completado )
+          .length;
+
+    if (pendientes === 0) {
+      this.lista.terminadaEn = new Date();
+      this.lista.terminado = true;
+    } else {
+      this.lista.terminadaEn = null;
+      this.lista.terminado = false;
     }
-}
-}
+
+    this.deseosService.guardarStorage();
+  }
+        }
+

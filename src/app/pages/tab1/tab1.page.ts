@@ -26,16 +26,16 @@ export class Tab1Page {
         {
           name: 'titulo',
           type: 'text',
-          placeholder: 'nombre de la lista',
+          placeholder: 'Nombre de la lista',
 
         }
       ],
       buttons: [
         {
           text: 'Cancelar',
-          role: 'Cancel',
+          role: 'cancel',
           handler: () => {
-            console.log('cancel');
+            console.log('Cancelar');
           }
         },
         {
