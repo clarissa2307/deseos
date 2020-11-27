@@ -13,6 +13,6 @@ export class DeseosService {
 
     this.listas.push(lista1, lista2);
 
-    console.log(this.listas);
+    
 }
 }
